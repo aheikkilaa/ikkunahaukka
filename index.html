@@ -1,208 +1,176 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ikkunahaukka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      background-color: #f5f9ff;
-      color: #1a1a1a;
+      padding: 0;
+      background-color: #f4f8fc;
     }
 
-    .topbar {
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: white;
       position: sticky;
       top: 0;
-      background-color: #ffffff;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      height: 100px;
+      margin-right: 20px;
+    }
+
+    .slogan {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: #005bbb;
+    }
+
+    .hero {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 999;
-    }
-
-    .logo {
-      height: 150px;
-      max-width: 100%;
-    }
-
-    header.main-header {
-      background-color: #0072ce;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header.main-header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    section.hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 60px;
       flex-wrap: wrap;
-      padding: 3rem 2rem;
+    }
+
+    .hero-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeInLeft 1.2s ease-out;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero-text {
-      flex: 1;
-      min-width: 250px;
-      text-align: left;
+      max-width: 600px;
+      animation: fadeInRight 1.2s ease-out;
     }
 
     .hero-text h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
     .hero-text p {
-      font-size: 1.8rem;
-    }
-
-    .hero-image {
-      flex: 1;
-      min-width: 250px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-image img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      font-size: 20px;
+      line-height: 1.6;
     }
 
     form {
-      max-width: 500px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeInUp 1.2s ease-out;
     }
 
     form h3 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: #0072ce;
+      margin-bottom: 20px;
+      font-size: 24px;
     }
 
     form input, form textarea {
       width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
     }
 
     form button {
-      background-color: #0072ce;
+      background-color: #005bbb;
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 14px 28px;
+      font-size: 16px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    #thank-you-message {
-      display: none;
-      color: green;
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: bold;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    form button:hover {
+      background-color: #004199;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background-color: #e8f0fa;
-      margin-top: 3rem;
+      padding: 20px;
+      font-size: 14px;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ylälogo -->
-  <div class="topbar">
-    <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-  </div>
-
-  <!-- Otsikko -->
-  <header class="main-header">
-    <h1 class="animate__animated animate__fadeIn">Ikkunahaukka</h1>
-    <p class="animate__animated animate__fadeIn">Ikkunanpesua Kotkan alueella</p>
+  <header>
+    <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo">
+    <div class="slogan">Ikkunat haukan nopeasti puhtaaksi!</div>
   </header>
 
-  <!-- Hero-osa -->
   <section class="hero">
-    <div class="hero-image animate__animated animate__zoomInLeft">
-      <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
+    <div class="hero-img">
+      <img src="ikkunanpesija.png" alt="Ikkunanpesijä työssä">
     </div>
-    <div class="hero-text animate__animated animate__fadeInUp">
+    <div class="hero-text">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
+      <p>
+        Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta.
+        Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti.
+        Ota yhteyttä ja pyydä ilmainen tarjous!
+      </p>
     </div>
   </section>
 
-  <!-- Yhteydenottolomake -->
-  <form id="contact-form" action="https://formsubmit.co/OMA_SÄHKÖPOSTISI" method="POST">
+  <form action="mailto:sinunsähköpostisi@example.com" method="POST" enctype="text/plain">
     <h3>Ota yhteyttä</h3>
-    <input type="text" name="name" placeholder="Nimesi" required>
-    <input type="email" name="email" placeholder="Sähköpostiosoitteesi" required>
-    <input type="tel" name="phone" placeholder="Puhelinnumerosi">
-    <textarea name="message" placeholder="Viesti" required></textarea>
+    <input type="text" name="Nimi" placeholder="Nimesi" required>
+    <input type="email" name="Sähköposti" placeholder="Sähköpostisi" required>
+    <textarea name="Viesti" rows="5" placeholder="Kirjoita viesti..." required></textarea>
     <button type="submit">Lähetä</button>
-    <div id="thank-you-message">Kiitos yhteydenotostasi! Otamme sinuun pian yhteyttä.</div>
-
-    <!-- Estää spammin -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
   </form>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
+    Y-tunnus: 3549642-1
   </footer>
-
-  <!-- Kiitos-viestin näyttö -->
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = this;
-
-      // Simuloi viestin lähetys
-      const thankYou = document.getElementById('thank-you-message');
-      form.querySelector("button").disabled = true;
-
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          thankYou.style.display = "block";
-          form.querySelector("button").disabled = false;
-        } else {
-          alert("Lähetys epäonnistui. Kokeile uudelleen.");
-        }
-      }).catch(() => alert("Virhe lähetyksessä."));
-    });
-  </script>
 
 </body>
 </html>
