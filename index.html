@@ -20,23 +20,22 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding: 1rem 2rem;
-      gap: 2rem;
+      padding: 0.5rem 1.5rem;
+      height: 70px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
 
-    .logo {
-      height: 300px;
-      max-width: 100%;
+    .topbar img.logo {
+      height: 60px;
+      margin-right: 1rem;
     }
 
-    .tagline {
+    .slogan {
       font-size: 1.5rem;
       font-style: italic;
-      font-weight: 500;
+      font-family: 'Segoe UI', sans-serif;
       color: #0072ce;
-      font-family: 'Trebuchet MS', sans-serif;
     }
 
     section.hero {
@@ -60,19 +59,18 @@
 
     .hero-text p {
       font-size: 1.2rem;
-      line-height: 1.6;
     }
 
     .hero-image {
       flex: 1;
       min-width: 250px;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .hero-image img {
-      width: 400px;
-      height: 400px;
+      width: 350px;
+      height: 350px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -99,7 +97,6 @@
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 1rem;
     }
 
     form button {
@@ -108,8 +105,14 @@
       padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 4px;
-      font-size: 1rem;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #005bb5;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     #thank-you-message {
@@ -128,31 +131,29 @@
 
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1rem;
       background-color: #e8f0fa;
       margin-top: 3rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky logo ja iskulause -->
+  <!-- Sticky topbar logo + iskulause -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-    <div class="tagline animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
+    <div class="slogan animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
   </div>
 
-  <!-- Hero-osio -->
+  <!-- Hero-osa -->
   <section class="hero">
     <div class="hero-image animate__animated animate__zoomInLeft">
       <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
     </div>
     <div class="hero-text animate__animated animate__fadeInUp">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta.
-      Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. 
-      Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
+      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta. Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
     </div>
   </section>
 
@@ -166,7 +167,7 @@
     <button type="submit">Lähetä</button>
     <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
 
-    <!-- Estää spammin -->
+    <!-- FormSubmit asetukset -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
   </form>
@@ -177,7 +178,7 @@
     Y-tunnus: 3549642-1
   </footer>
 
-  <!-- Lomakkeen lähetys käsittely -->
+  <!-- Kiitos-viestin JS -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -195,10 +196,12 @@
           thankYou.style.display = "block";
           form.querySelector("button").disabled = false;
         } else {
-          alert("Valitettavasti lähetys ei onnistunut. Yritäthän hetken kuluttua uudelleen.");
+          thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
+          thankYou.style.display = "block";
         }
       }).catch(() => {
-        alert("Verkkovirhe lähetyksessä. Tarkista yhteys ja yritä uudelleen.");
+        thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
+        thankYou.style.display = "block";
       });
     });
   </script>
