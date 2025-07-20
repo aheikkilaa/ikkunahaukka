@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 <html lang="fi">
-<header class="topbar">
-  <div class="logo-bar">
-  <img src="images/ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo">
-</div>
-
-</header>
-
-
-
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .topbar {
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 999;
-}
-
-.logo {
-  height: 60px;
-  max-width: 200px;
-}
+    * {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,35 +16,74 @@
       background-color: #f5f9ff;
       color: #1a1a1a;
     }
-    header {
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .logo-bar img {
+      height: 60px;
+      max-width: 200px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-bar img:hover {
+      transform: scale(1.05);
+    }
+
+    header.hero-header {
       background-color: #0072ce;
       color: white;
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
     }
-    header h1 {
+
+    header.hero-header h1 {
       margin: 0;
       font-size: 2.5rem;
     }
+
     section.hero {
       text-align: center;
       padding: 3rem 1rem;
     }
+
     section.hero h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
-    .image-placeholder {
-      width: 100%;
-      height: 300px;
-      background-color: #cde3f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #555;
-      font-size: 1.2rem;
+
+    section.hero p {
+      font-size: 1.8rem;
       margin-bottom: 2rem;
     }
+
+    .about-image {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
     form {
       max-width: 500px;
       margin: 0 auto;
@@ -73,11 +92,13 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     form h3 {
       margin-top: 0;
       margin-bottom: 1rem;
       color: #0072ce;
     }
+
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -85,6 +106,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     form button {
       background-color: #0072ce;
       color: white;
@@ -92,7 +114,13 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
+    form button:hover {
+      background-color: #005fa3;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -102,17 +130,32 @@
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Sticky logo yläreunassa -->
+  <div class="topbar">
+    <div class="logo-bar">
+      <img src="images/ikkunahaukka2.png" alt="Ikkunahaukka logo">
+    </div>
+  </div>
+
+  <!-- Hero otsikko -->
+  <header class="hero-header">
     <h1>Ikkunahaukka</h1>
     <p>Ikkunanpesua Kotkan alueella</p>
   </header>
 
+  <!-- Päätekstit -->
   <section class="hero">
-    <div class="image-placeholder">[TÄHÄN KUVA 1]</div>
     <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
     <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
   </section>
 
+  <!-- Profiilikuva pyöreänä -->
+  <section class="about-image">
+    <img src="images/ikkunanpesija.png" alt="Ikkunanpesijä työssään" class="profile-pic">
+  </section>
+
+  <!-- Lomake -->
   <form id="contact-form">
     <h3>Ota yhteyttä</h3>
     <p>Soita: <strong>044 978 1824</strong></p>
@@ -125,14 +168,15 @@
     <button type="submit">Lähetä</button>
   </form>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
   </footer>
 
+  <!-- Mailto-lähetys -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-
       const name = e.target.name.value;
       const email = e.target.email.value;
       const phone = e.target.phone.value;
@@ -143,5 +187,6 @@
       window.location.href = `mailto:aaro.heikkila@icloud.com?subject=Uusi yhteydenotto Ikkunahaukka&body=${encodeURIComponent(body)}`;
     });
   </script>
+
 </body>
 </html>
