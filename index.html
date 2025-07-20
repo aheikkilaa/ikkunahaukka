@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,21 +19,24 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       padding: 1rem 2rem;
+      gap: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
 
     .logo {
-      height: 250px;
+      height: 300px;
       max-width: 100%;
-      margin-right: 20px;
     }
 
-    .slogan {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8rem;
+    .tagline {
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 500;
       color: #0072ce;
+      font-family: 'Trebuchet MS', sans-serif;
     }
 
     section.hero {
@@ -52,12 +54,13 @@
     }
 
     .hero-text h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
     .hero-text p {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
     }
 
     .hero-image {
@@ -68,8 +71,8 @@
     }
 
     .hero-image img {
-      width: 350px;
-      height: 350px;
+      width: 400px;
+      height: 400px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -96,6 +99,7 @@
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 1rem;
     }
 
     form button {
@@ -104,6 +108,7 @@
       padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
     }
 
@@ -127,28 +132,27 @@
       background-color: #e8f0fa;
       margin-top: 3rem;
       font-size: 0.95rem;
-      color: #555;
     }
   </style>
 </head>
 <body>
 
-  <!-- Ylälogo ja iskulause -->
+  <!-- Sticky logo ja iskulause -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-    <div class="slogan animate__animated animate__fadeInRight">
-      Ikkunat haukan nopeasti puhtaaksi!
-    </div>
+    <div class="tagline animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
   </div>
 
-  <!-- Hero-osa -->
+  <!-- Hero-osio -->
   <section class="hero">
     <div class="hero-image animate__animated animate__zoomInLeft">
       <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
     </div>
     <div class="hero-text animate__animated animate__fadeInUp">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta. Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
+      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta.
+      Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. 
+      Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
     </div>
   </section>
 
@@ -160,7 +164,7 @@
     <input type="tel" name="phone" placeholder="Puhelinnumerosi">
     <textarea name="message" placeholder="Viesti" required></textarea>
     <button type="submit">Lähetä</button>
-    <div id="thank-you-message">Kiitos yhteydenotostasi! Otamme sinuun pian yhteyttä.</div>
+    <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
 
     <!-- Estää spammin -->
     <input type="hidden" name="_captcha" value="false">
@@ -173,13 +177,11 @@
     Y-tunnus: 3549642-1
   </footer>
 
-  <!-- Kiitos-viestin näyttö -->
+  <!-- Lomakkeen lähetys käsittely -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = this;
-
-      // Simuloi viestin lähetys
       const thankYou = document.getElementById('thank-you-message');
       form.querySelector("button").disabled = true;
 
@@ -193,9 +195,11 @@
           thankYou.style.display = "block";
           form.querySelector("button").disabled = false;
         } else {
-          alert("Lähetys epäonnistui. Kokeile uudelleen.");
+          alert("Valitettavasti lähetys ei onnistunut. Yritäthän hetken kuluttua uudelleen.");
         }
-      }).catch(() => alert("Virhe lähetyksessä."));
+      }).catch(() => {
+        alert("Verkkovirhe lähetyksessä. Tarkista yhteys ja yritä uudelleen.");
+      });
     });
   </script>
 
