@@ -19,23 +19,25 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      padding: 0.5rem 1.5rem;
-      height: 100px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       z-index: 999;
+      min-height: 120px;
     }
 
-    .topbar img.logo {
-      height: 90px;
-      margin-right: 1rem;
+    .logo {
+      height: 130px;
+      max-width: 100%;
     }
 
     .slogan {
-      font-size: 1.5rem;
-      font-style: italic;
       font-family: 'Segoe UI', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 500;
       color: #0072ce;
+      margin-left: 2rem;
+      white-space: nowrap;
     }
 
     section.hero {
@@ -48,7 +50,7 @@
 
     .hero-text {
       flex: 1;
-      min-width: 250px;
+      min-width: 280px;
       text-align: left;
     }
 
@@ -58,12 +60,13 @@
     }
 
     .hero-text p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      line-height: 1.6;
     }
 
     .hero-image {
       flex: 1;
-      min-width: 250px;
+      min-width: 280px;
       display: flex;
       justify-content: flex-start;
     }
@@ -73,7 +76,7 @@
       height: 350px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     }
 
     form {
@@ -110,9 +113,9 @@
     }
 
     form button:hover {
-      background-color: #005bb5;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background-color: #005999;
+      box-shadow: 0 0 10px rgba(0, 114, 206, 0.4);
+      transform: scale(1.03);
     }
 
     #thank-you-message {
@@ -134,16 +137,19 @@
       padding: 1rem;
       background-color: #e8f0fa;
       margin-top: 3rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      color: #333;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky topbar logo + iskulause -->
+  <!-- Ylälogo + iskulause -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-    <div class="slogan animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
+    <div class="slogan animate__animated animate__fadeInRight">
+      Ikkunat haukan nopeasti puhtaaksi!
+    </div>
   </div>
 
   <!-- Hero-osa -->
@@ -158,16 +164,16 @@
   </section>
 
   <!-- Yhteydenottolomake -->
-  <form id="contact-form" action="https://formsubmit.co/aaro.heikkila@icloud.com" method="POST">
+  <form id="contact-form" action="https://formsubmit.co/OMA_SÄHKÖPOSTISI" method="POST">
     <h3>Ota yhteyttä</h3>
     <input type="text" name="name" placeholder="Nimesi" required>
     <input type="email" name="email" placeholder="Sähköpostiosoitteesi" required>
     <input type="tel" name="phone" placeholder="Puhelinnumerosi">
     <textarea name="message" placeholder="Viesti" required></textarea>
     <button type="submit">Lähetä</button>
-    <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
+    <div id="thank-you-message">Kiitos yhteydenotostasi! Pyrimme vastaamaan haukan nopeudella!</div>
 
-    <!-- FormSubmit asetukset -->
+    <!-- Estää roskapostin -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
   </form>
@@ -178,7 +184,7 @@
     Y-tunnus: 3549642-1
   </footer>
 
-  <!-- Kiitos-viestin JS -->
+  <!-- Kiitosviestin näyttö -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -196,13 +202,9 @@
           thankYou.style.display = "block";
           form.querySelector("button").disabled = false;
         } else {
-          thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-          thankYou.style.display = "block";
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
         }
-      }).catch(() => {
-        thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-        thankYou.style.display = "block";
-      });
+      }).catch(() => alert("Lähetys epäonnistui. Kokeile uudelleen."));
     });
   </script>
 
