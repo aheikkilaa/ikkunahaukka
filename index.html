@@ -1,110 +1,208 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ikkunahaukka</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f1f7ff;
-      color: #111;
+      background-color: #f5f9ff;
+      color: #1a1a1a;
     }
 
-    header {
+    .topbar {
       position: sticky;
       top: 0;
-      background-color: #0078d7;
+      background-color: #ffffff;
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 999;
     }
 
-    header img {
-      height: 50px;
-      margin-right: 15px;
+    .logo {
+      height: 150px;
+      max-width: 100%;
     }
 
-    header h1 {
+    header.main-header {
+      background-color: #0072ce;
       color: white;
-      font-size: 24px;
-      margin: 0;
-    }
-
-    header p {
-      color: #e0ecff;
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .hero {
+      padding: 2rem;
       text-align: center;
-      padding: 80px 20px 40px;
     }
 
-    .hero h2 {
-      font-size: 28px;
-      font-weight: 700;
+    header.main-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
     }
 
-    .hero p {
-      font-size: 22px;
-      margin: 20px auto;
-      max-width: 800px;
+    section.hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 3rem 2rem;
     }
 
-    .profile-image {
-      display: block;
-      margin: 40px auto;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
+    .hero-text {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+
+    .hero-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.8rem;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 300px;
+      height: 300px;
       object-fit: cover;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 2s ease-in-out;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    form h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #0072ce;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: #0072ce;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #thank-you-message {
+      display: none;
+      color: green;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+      animation: fadeIn 1s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
-      background-color: #e6f0ff;
-      margin-top: 80px;
-    }
-
-    footer p {
-      font-size: 14px;
-      color: #333;
+      padding: 1rem;
+      background-color: #e8f0fa;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" />
-    <div>
-      <h1>Ikkunahaukka</h1>
-      <p>Ikkunanpesua Kotkan alueella</p>
-    </div>
+  <!-- Ylälogo -->
+  <div class="topbar">
+    <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
+  </div>
+
+  <!-- Otsikko -->
+  <header class="main-header">
+    <h1 class="animate__animated animate__fadeIn">Ikkunahaukka</h1>
+    <p class="animate__animated animate__fadeIn">Ikkunanpesua Kotkan alueella</p>
   </header>
 
+  <!-- Hero-osa -->
   <section class="hero">
-    <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-    <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
-
-    <img src="ikkunanpesija.png" alt="Ikkunanpesijä työssään" class="profile-image" />
+    <div class="hero-image animate__animated animate__zoomInLeft">
+      <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
+    </div>
+    <div class="hero-text animate__animated animate__fadeInUp">
+      <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
+      <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
+    </div>
   </section>
 
+  <!-- Yhteydenottolomake -->
+  <form id="contact-form" action="https://formsubmit.co/OMA_SÄHKÖPOSTISI" method="POST">
+    <h3>Ota yhteyttä</h3>
+    <input type="text" name="name" placeholder="Nimesi" required>
+    <input type="email" name="email" placeholder="Sähköpostiosoitteesi" required>
+    <input type="tel" name="phone" placeholder="Puhelinnumerosi">
+    <textarea name="message" placeholder="Viesti" required></textarea>
+    <button type="submit">Lähetä</button>
+    <div id="thank-you-message">Kiitos yhteydenotostasi! Otamme sinuun pian yhteyttä.</div>
+
+    <!-- Estää spammin -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
+  </form>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Ikkunahaukka – kaikki oikeudet pidätetään.</p>
+    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
   </footer>
+
+  <!-- Kiitos-viestin näyttö -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+
+      // Simuloi viestin lähetys
+      const thankYou = document.getElementById('thank-you-message');
+      form.querySelector("button").disabled = true;
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          thankYou.style.display = "block";
+          form.querySelector("button").disabled = false;
+        } else {
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
+        }
+      }).catch(() => alert("Virhe lähetyksessä."));
+    });
+  </script>
 
 </body>
 </html>
