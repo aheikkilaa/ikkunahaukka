@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,27 +20,21 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 1rem 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
 
     .logo {
-      height: 150px;
+      height: 250px;
       max-width: 100%;
+      margin-right: 20px;
     }
 
-    header.main-header {
-      background-color: #0072ce;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header.main-header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .slogan {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #0072ce;
     }
 
     section.hero {
@@ -62,7 +57,7 @@
     }
 
     .hero-text p {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     .hero-image {
@@ -73,8 +68,8 @@
     }
 
     .hero-image img {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -128,24 +123,23 @@
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background-color: #e8f0fa;
       margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
 
-  <!-- Ylälogo -->
+  <!-- Ylälogo ja iskulause -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
+    <div class="slogan animate__animated animate__fadeInRight">
+      Ikkunat haukan nopeasti puhtaaksi!
+    </div>
   </div>
-
-  <!-- Otsikko -->
-  <header class="main-header">
-    <h1 class="animate__animated animate__fadeIn">Ikkunahaukka</h1>
-    <p class="animate__animated animate__fadeIn">Ikkunanpesua Kotkan alueella</p>
-  </header>
 
   <!-- Hero-osa -->
   <section class="hero">
@@ -154,7 +148,7 @@
     </div>
     <div class="hero-text animate__animated animate__fadeInUp">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
+      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta. Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
     </div>
   </section>
 
@@ -175,7 +169,8 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
+    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella<br>
+    Y-tunnus: 3549642-1
   </footer>
 
   <!-- Kiitos-viestin näyttö -->
