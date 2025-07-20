@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
@@ -19,23 +19,27 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      padding: 0.5rem 1.5rem;
-      height: 70px;
+      justify-content: space-between;
+      padding: 1rem 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
 
-    .topbar img.logo {
-      height: 60px;
-      margin-right: 1rem;
+    .logo {
+      height: 150px;
+      max-width: 100%;
     }
 
-    .slogan {
-      font-size: 1.5rem;
-      font-style: italic;
-      font-family: 'Segoe UI', sans-serif;
-      color: #0072ce;
+    header.main-header {
+      background-color: #0072ce;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header.main-header h1 {
+      margin: 0;
+      font-size: 2.5rem;
     }
 
     section.hero {
@@ -53,24 +57,24 @@
     }
 
     .hero-text h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
     .hero-text p {
-      font-size: 1.2rem;
+      font-size: 1.8rem;
     }
 
     .hero-image {
       flex: 1;
       min-width: 250px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     .hero-image img {
-      width: 350px;
-      height: 350px;
+      width: 300px;
+      height: 300px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -106,13 +110,6 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    form button:hover {
-      background-color: #005bb5;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     #thank-you-message {
@@ -134,17 +131,21 @@
       padding: 1rem;
       background-color: #e8f0fa;
       margin-top: 3rem;
-      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky topbar logo + iskulause -->
+  <!-- Ylälogo -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-    <div class="slogan animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
   </div>
+
+  <!-- Otsikko -->
+  <header class="main-header">
+    <h1 class="animate__animated animate__fadeIn">Ikkunahaukka</h1>
+    <p class="animate__animated animate__fadeIn">Ikkunanpesua Kotkan alueella</p>
+  </header>
 
   <!-- Hero-osa -->
   <section class="hero">
@@ -153,7 +154,7 @@
     </div>
     <div class="hero-text animate__animated animate__fadeInUp">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta. Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
+      <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
     </div>
   </section>
 
@@ -165,24 +166,25 @@
     <input type="tel" name="phone" placeholder="Puhelinnumerosi">
     <textarea name="message" placeholder="Viesti" required></textarea>
     <button type="submit">Lähetä</button>
-    <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
+    <div id="thank-you-message">Kiitos yhteydenotostasi! Otamme sinuun pian yhteyttä.</div>
 
-    <!-- FormSubmit asetukset -->
+    <!-- Estää spammin -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
   </form>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella<br>
-    Y-tunnus: 3549642-1
+    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
   </footer>
 
-  <!-- Kiitos-viestin JS -->
+  <!-- Kiitos-viestin näyttö -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = this;
+
+      // Simuloi viestin lähetys
       const thankYou = document.getElementById('thank-you-message');
       form.querySelector("button").disabled = true;
 
@@ -196,13 +198,9 @@
           thankYou.style.display = "block";
           form.querySelector("button").disabled = false;
         } else {
-          thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-          thankYou.style.display = "block";
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
         }
-      }).catch(() => {
-        thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-        thankYou.style.display = "block";
-      });
+      }).catch(() => alert("Virhe lähetyksessä."));
     });
   </script>
 
