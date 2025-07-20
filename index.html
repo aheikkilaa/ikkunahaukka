@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
@@ -20,22 +20,23 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding: 0.5rem 1.5rem;
-      height: 100px;
+      padding: 1rem 2rem;
+      gap: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
 
-    .topbar img.logo {
-      height: 90px;
-      margin-right: 1rem;
+    .logo {
+      height: 300px;
+      max-width: 100%;
     }
 
-    .slogan {
+    .tagline {
       font-size: 1.5rem;
       font-style: italic;
-      font-family: 'Segoe UI', sans-serif;
+      font-weight: 500;
       color: #0072ce;
+      font-family: 'Trebuchet MS', sans-serif;
     }
 
     section.hero {
@@ -59,18 +60,19 @@
 
     .hero-text p {
       font-size: 1.2rem;
+      line-height: 1.6;
     }
 
     .hero-image {
       flex: 1;
       min-width: 250px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     .hero-image img {
-      width: 350px;
-      height: 350px;
+      width: 400px;
+      height: 400px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -97,6 +99,7 @@
       margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 1rem;
     }
 
     form button {
@@ -105,14 +108,8 @@
       padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    form button:hover {
-      background-color: #005bb5;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     #thank-you-message {
@@ -131,29 +128,31 @@
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background-color: #e8f0fa;
       margin-top: 3rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky topbar logo + iskulause -->
+  <!-- Sticky logo ja iskulause -->
   <div class="topbar">
     <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
-    <div class="slogan animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
+    <div class="tagline animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
   </div>
 
-  <!-- Hero-osa -->
+  <!-- Hero-osio -->
   <section class="hero">
     <div class="hero-image animate__animated animate__zoomInLeft">
       <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
     </div>
     <div class="hero-text animate__animated animate__fadeInUp">
       <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
-      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta. Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
+      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta.
+      Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. 
+      Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
     </div>
   </section>
 
@@ -167,7 +166,7 @@
     <button type="submit">Lähetä</button>
     <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
 
-    <!-- FormSubmit asetukset -->
+    <!-- Estää spammin -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
   </form>
@@ -178,7 +177,7 @@
     Y-tunnus: 3549642-1
   </footer>
 
-  <!-- Kiitos-viestin JS -->
+  <!-- Lomakkeen lähetys käsittely -->
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -196,12 +195,10 @@
           thankYou.style.display = "block";
           form.querySelector("button").disabled = false;
         } else {
-          thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-          thankYou.style.display = "block";
+          alert("Valitettavasti lähetys ei onnistunut. Yritäthän hetken kuluttua uudelleen.");
         }
       }).catch(() => {
-        thankYou.textContent = "Lähetys epäonnistui. Kokeile uudelleen.";
-        thankYou.style.display = "block";
+        alert("Verkkovirhe lähetyksessä. Tarkista yhteys ja yritä uudelleen.");
       });
     });
   </script>
