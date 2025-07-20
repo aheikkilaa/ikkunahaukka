@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ikkunahaukka – Ikkunanpesua Kotkan alueella</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f5f9ff;
+      color: #1a1a1a;
+    }
+    header {
+      background-color: #0072ce;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    section.hero {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    section.hero h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .image-placeholder {
+      width: 100%;
+      height: 300px;
+      background-color: #cde3f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    form h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #0072ce;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      background-color: #0072ce;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #e8f0fa;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ikkunahaukka</h1>
+    <p>Ikkunanpesua Kotkan alueella</p>
+  </header>
+
+  <section class="hero">
+    <div class="image-placeholder">[TÄHÄN KUVA 1]</div>
+    <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
+    <p>Tarjoamme ikkunanpesupalveluja Kotkan alueen koteihin ja yrityksiin. Ota yhteyttä ja pyydä tarjous!</p>
+  </section>
+
+  <form id="contact-form">
+    <h3>Ota yhteyttä</h3>
+    <p>Soita: <strong>044 978 1824</strong></p>
+    <p>Sähköposti: <a href="mailto:aaro.heikkila@icloud.com">aaro.heikkila@icloud.com</a></p>
+    <p>Jätä yhteystietosi, niin otamme sinuun yhteyttä:</p>
+    <input type="text" name="name" placeholder="Nimesi" required>
+    <input type="email" name="email" placeholder="Sähköpostiosoitteesi">
+    <input type="tel" name="phone" placeholder="Puhelinnumerosi">
+    <textarea name="message" placeholder="Lisätietoa / toiveet"></textarea>
+    <button type="submit">Lähetä</button>
+  </form>
+
+  <footer>
+    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const phone = e.target.phone.value;
+      const message = e.target.message.value;
+
+      const body = `Uusi yhteydenottopyyntö:\n\nNimi: ${name}\nEmail: ${email}\nPuhelin: ${phone}\nViesti: ${message}`;
+
+      window.location.href = `mailto:aaro.heikkila@icloud.com?subject=Uusi yhteydenotto Ikkunahaukka&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
