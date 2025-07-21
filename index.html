@@ -103,7 +103,10 @@
       color: #0072ce;
     }
 
-    .form-section input,
+    .form-section input[type="text"],
+    .form-section input[type="email"],
+    .form-section input[type="tel"],
+    .form-section input[type="number"],
     .form-section textarea,
     .form-section select,
     .form-section button {
@@ -120,6 +123,14 @@
       color: white;
       border: none;
       cursor: pointer;
+    }
+
+    .form-section label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      gap: 0.5rem;
     }
 
     .hidden { display: none; }
@@ -195,34 +206,33 @@
     </div>
   </section>
 
-  <!-- Monivaiheinen lomake (lisätty tähän) -->
   <div class="form-section" id="multi-step-form">
-    <form id="wizard-form" action="https://formsubmit.co/OMA_SÄHKÖPOSTISI" method="POST">
+    <form id="wizard-form" action="https://formsubmit.co/aaro.heikkila@icloud.com" method="POST">
       <div class="form-step active" id="step-1">
         <h3>Ota yhteyttä ja pyydä ilmainen tarjous!</h3>
-        <label><input type="radio" name="Kohdetyyppi" value="Omakotitalo" required> Omakotitalo</label><br>
-        <label><input type="radio" name="Kohdetyyppi" value="Rivi/paritalo"> Rivi/paritalo</label><br>
-        <label><input type="radio" name="Kohdetyyppi" value="Kerrostalo"> Kerrostalo</label><br>
+        <label><input type="radio" name="Kohdetyyppi" value="Omakotitalo" required> Omakotitalo</label>
+        <label><input type="radio" name="Kohdetyyppi" value="Rivi/paritalo"> Rivi/paritalo</label>
+        <label><input type="radio" name="Kohdetyyppi" value="Kerrostalo"> Kerrostalo</label>
         <button type="button" onclick="nextStep(2)">Jatka</button>
       </div>
 
       <div class="form-step" id="step-2">
         <h3>Mitkä pinnat haluat pestä?</h3>
-        <label><input type="radio" name="Pestävät pinnat" value="Ulkopinnat" required> Ulkopinnat</label><br>
-        <label><input type="radio" name="Pestävät pinnat" value="Sisäpinnat"> Sisäpinnat</label><br>
-        <label><input type="radio" name="Pestävät pinnat" value="Kaikki pinnat"> Kaikki pinnat</label><br>
+        <label><input type="radio" name="Pestävät pinnat" value="Ulkopinnat" required> Ulkopinnat</label>
+        <label><input type="radio" name="Pestävät pinnat" value="Sisäpinnat"> Sisäpinnat</label>
+        <label><input type="radio" name="Pestävät pinnat" value="Kaikki pinnat"> Kaikki pinnat</label>
         <button type="button" onclick="nextStep(3)">Seuraava</button>
       </div>
 
       <div class="form-step" id="step-3">
         <h3>Ikkunamäärät</h3>
-        <label>Normaalit 4-pintaiset ikkunat: <input type="number" name="4-pintaiset ikkunat"></label><br>
-        <label>Normaalit 6-pintaiset ikkunat: <input type="number" name="6-pintaiset ikkunat"></label><br>
-        <label>Tuuletusikkunat: <input type="number" name="Tuuletusikkunat"></label><br>
-        <label>Ovet: <input type="number" name="Ovet"></label><br>
-        <label>Kääntyvät parvekelasit: <input type="number" name="Parvekelasit"></label><br>
+        <label>Normaalit 4-pintaiset ikkunat: <input type="number" name="4-pintaiset ikkunat"></label>
+        <label>Normaalit 6-pintaiset ikkunat: <input type="number" name="6-pintaiset ikkunat"></label>
+        <label>Tuuletusikkunat: <input type="number" name="Tuuletusikkunat"></label>
+        <label>Ovet: <input type="number" name="Ovet"></label>
+        <label>Kääntyvät parvekelasit: <input type="number" name="Parvekelasit"></label>
         <label>Muut ikkunat tai erityistoiveet:<br>
-        <textarea name="Muut ikkunat"></textarea></label><br>
+        <textarea name="Muut ikkunat"></textarea></label>
         <button type="button" onclick="nextStep(4)">Seuraava</button>
       </div>
 
