@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       background-color: #f5f9ff;
       color: #1a1a1a;
@@ -19,6 +19,7 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       padding: 0.7rem 2rem;
       gap: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -35,9 +36,51 @@
       font-size: 2rem;
       font-weight: 700;
       color: #0072ce;
+      font-family: 'Trebuchet MS', sans-serif;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
-    .form-container {
+    section.hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 3rem 2rem;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+
+    .hero-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
       max-width: 600px;
       margin: 2rem auto;
       background: white;
@@ -54,12 +97,16 @@
       display: block;
     }
 
-    h3 {
-      color: #0072ce;
+    .form-section h3 {
+      margin-top: 0;
       margin-bottom: 1rem;
+      color: #0072ce;
     }
 
-    input, textarea, select, button {
+    .form-section input,
+    .form-section textarea,
+    .form-section select,
+    .form-section button {
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1rem;
@@ -68,21 +115,67 @@
       font-size: 1rem;
     }
 
-    .button-group button {
-      width: auto;
-      margin-right: 1rem;
+    .form-section button {
+      background-color: #0072ce;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
 
-    #thank-you-message {
-      display: none;
-      color: green;
+    .hidden { display: none; }
+
+    footer {
       text-align: center;
-      margin-top: 1rem;
-      font-weight: bold;
+      padding: 1.5rem;
+      background-color: #e8f0fa;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+
+      .logo {
+        height: 140px;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+      }
+
+      section.hero {
+        flex-direction: column-reverse;
+        padding: 2rem 1rem;
+      }
+
+      .hero-text, .hero-image {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-text h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .hero-image img {
+        width: 250px;
+        height: 250px;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="topbar">
     <a href="https://aheikkilaa.github.io/ikkunahaukka/">
       <img src="ikkunahaukka2.png" alt="Ikkunahaukka logo" class="logo animate__animated animate__fadeInDown">
@@ -90,132 +183,78 @@
     <div class="tagline animate__animated animate__fadeInRight">Ikkunat haukan nopeasti puhtaaksi!</div>
   </div>
 
-  <div class="form-container">
-    <form id="multiStepForm">
-      <h3>Ota yhteyttä ja pyydä ilmainen tarjous!</h3>
+  <section class="hero">
+    <div class="hero-image animate__animated animate__zoomInLeft">
+      <img src="ikkunanpesija.png" alt="Ikkunanpesijä">
+    </div>
+    <div class="hero-text animate__animated animate__fadeInUp">
+      <h2>Luotettavaa ikkunanpesua nopeasti ja ammattitaidolla</h2>
+      <p>Tarjoamme ikkunanpesua Kotkan alueen koteihin ja yrityksiin jo kolmen vuoden kokemuksella alalta.
+      Hinnoittelumme ei tuota yllätyksiä, koska hinnoittelemme työmme aina urakkaperusteisesti. 
+      Saat työstämme aina kotitalousvähennyksen! Ota yhteyttä ja pyydä ilmainen tarjous!</p>
+    </div>
+  </section>
 
-      <!-- Step 1 -->
-      <div class="form-step active">
-        <label>Valitse kohde:</label>
-        <div class="button-group">
-          <button type="button" onclick="setField('kohde','Omakotitalo')">Omakotitalo</button>
-          <button type="button" onclick="setField('kohde','Rivi/paritalo')">Rivi/paritalo</button>
-          <button type="button" onclick="setField('kohde','Kerrostalo')">Kerrostalo</button>
-        </div>
-        <input type="hidden" name="Kohde" id="kohde">
-        <button type="button" onclick="nextStep()">Jatka</button>
+  <!-- Monivaiheinen lomake (lisätty tähän) -->
+  <div class="form-section" id="multi-step-form">
+    <form id="wizard-form" action="https://formsubmit.co/OMA_SÄHKÖPOSTISI" method="POST">
+      <div class="form-step active" id="step-1">
+        <h3>Ota yhteyttä ja pyydä ilmainen tarjous!</h3>
+        <label><input type="radio" name="Kohdetyyppi" value="Omakotitalo" required> Omakotitalo</label><br>
+        <label><input type="radio" name="Kohdetyyppi" value="Rivi/paritalo"> Rivi/paritalo</label><br>
+        <label><input type="radio" name="Kohdetyyppi" value="Kerrostalo"> Kerrostalo</label><br>
+        <button type="button" onclick="nextStep(2)">Jatka</button>
       </div>
 
-      <!-- Step 2 -->
-      <div class="form-step">
-        <label>Mitkä pinnat haluat pestä?</label>
-        <select name="Pestavat pinnat" required>
-          <option value="Ulkopinnat">Ulkopinnat</option>
-          <option value="Sisäpinnat">Sisäpinnat</option>
-          <option value="Kaikki pinnat">Kaikki pinnat</option>
-        </select>
-        <button type="button" onclick="nextStep()">Seuraava</button>
+      <div class="form-step" id="step-2">
+        <h3>Mitkä pinnat haluat pestä?</h3>
+        <label><input type="radio" name="Pestävät pinnat" value="Ulkopinnat" required> Ulkopinnat</label><br>
+        <label><input type="radio" name="Pestävät pinnat" value="Sisäpinnat"> Sisäpinnat</label><br>
+        <label><input type="radio" name="Pestävät pinnat" value="Kaikki pinnat"> Kaikki pinnat</label><br>
+        <button type="button" onclick="nextStep(3)">Seuraava</button>
       </div>
 
-      <!-- Step 3 -->
-      <div class="form-step">
-        <label>Normaalit 4-pintaiset ikkunat</label>
-        <input type="number" name="4-pintaiset ikkunat" min="0">
-
-        <label>Normaalit 6-pintaiset ikkunat</label>
-        <input type="number" name="6-pintaiset ikkunat" min="0">
-
-        <label>Tuuletusikkunat</label>
-        <input type="number" name="Tuuletusikkunat" min="0">
-
-        <label>Ovet</label>
-        <input type="number" name="Ovet" min="0">
-
-        <label>Kääntyvät parvekelasit</label>
-        <input type="number" name="Parvekelasit" min="0">
-
-        <label>Muut ikkunat tai erityistoiveet</label>
-        <textarea name="Erityisikkunat" placeholder="Erikoispyynnöt tai muut ikkunatyypit"></textarea>
-
-        <button type="button" onclick="nextStep()">Seuraava</button>
+      <div class="form-step" id="step-3">
+        <h3>Ikkunamäärät</h3>
+        <label>Normaalit 4-pintaiset ikkunat: <input type="number" name="4-pintaiset ikkunat"></label><br>
+        <label>Normaalit 6-pintaiset ikkunat: <input type="number" name="6-pintaiset ikkunat"></label><br>
+        <label>Tuuletusikkunat: <input type="number" name="Tuuletusikkunat"></label><br>
+        <label>Ovet: <input type="number" name="Ovet"></label><br>
+        <label>Kääntyvät parvekelasit: <input type="number" name="Parvekelasit"></label><br>
+        <label>Muut ikkunat tai erityistoiveet:<br>
+        <textarea name="Muut ikkunat"></textarea></label><br>
+        <button type="button" onclick="nextStep(4)">Seuraava</button>
       </div>
 
-      <!-- Step 4 -->
-      <div class="form-step">
-        <label>Osoite</label>
-        <input type="text" name="Osoite" required>
-
-        <label>Postinumero</label>
-        <input type="text" name="Postinumero" required>
-
-        <label>Postitoimipaikka</label>
-        <input type="text" name="Postitoimipaikka" required>
-
-        <label>Etunimi</label>
-        <input type="text" name="Etunimi" required>
-
-        <label>Sukunimi</label>
-        <input type="text" name="Sukunimi" required>
-
-        <label>Puhelinnumero</label>
-        <input type="tel" name="Puhelin" required>
-
-        <label>Sähköpostiosoite</label>
-        <input type="email" name="Sähköposti" required>
-
-        <label>Viesti (valinnainen)</label>
-        <textarea name="Viesti"></textarea>
-
+      <div class="form-step" id="step-4">
+        <h3>Yhteystiedot</h3>
+        <input type="text" name="Osoite" placeholder="Osoite" required>
+        <input type="text" name="Postinumero" placeholder="Postinumero" required>
+        <input type="text" name="Postitoimipaikka" placeholder="Postitoimipaikka" required>
+        <input type="text" name="Etunimi" placeholder="Etunimi" required>
+        <input type="text" name="Sukunimi" placeholder="Sukunimi" required>
+        <input type="tel" name="Puhelinnumero" placeholder="Puhelinnumero" required>
+        <input type="email" name="Sähköposti" placeholder="Sähköpostiosoite" required>
+        <textarea name="Viesti" placeholder="Valinnainen viesti"></textarea>
         <button type="submit">Lähetä</button>
       </div>
 
-      <div id="thank-you-message">Kiitos yhteydenotosta. Pyrimme vastaamaan haukan nopeudella!</div>
-
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_autoresponse" value="Kiitos viestistäsi! Otamme sinuun pian yhteyttä.">
-      <input type="hidden" name="_next" value="https://aheikkilaa.github.io/ikkunahaukka/">
     </form>
   </div>
 
+  <footer>
+    &copy; 2025 Ikkunahaukka – Ikkunanpesua Kotkan alueella<br>
+    Y-tunnus: 3549642-1
+  </footer>
+
   <script>
-    const steps = document.querySelectorAll('.form-step');
-    let currentStep = 0;
-
-    function nextStep() {
-      if (currentStep < steps.length - 1) {
-        steps[currentStep].classList.remove('active');
-        currentStep++;
-        steps[currentStep].classList.add('active');
-      }
+    function nextStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step-' + step).classList.add('active');
     }
-
-    function setField(id, value) {
-      document.getElementById(id).value = value;
-    }
-
-    document.getElementById('multiStepForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = this;
-      const thankYou = document.getElementById('thank-you-message');
-
-      fetch("https://formsubmit.co/OMA_SÄHKÖPOSTISI", {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          steps[currentStep].classList.remove('active');
-          currentStep = 0;
-          steps[0].classList.add('active');
-          thankYou.style.display = 'block';
-        } else {
-          alert("Valitettavasti lähetys ei onnistunut. Yritä myöhemmin uudelleen.");
-        }
-      }).catch(() => {
-        alert("Verkkovirhe. Tarkista yhteys ja yritä uudelleen.");
-      });
-    });
   </script>
+
 </body>
 </html>
