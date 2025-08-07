@@ -237,7 +237,9 @@
   </section>
 
   <div class="form-section" id="multi-step-form">
-    <form id="wizard-form">
+    <form action="https://formsubmit.co/aaro.heikkila@icloud.com" method="POST" id="wizard-form">
+      <input type="hidden" name="_captcha" value="false">
+
       <div class="form-step active" id="step-1">
         <h3>Ota yhteyttä ja pyydä ilmainen tarjous!</h3>
         <label><input type="radio" name="Kohdetyyppi" value="Omakotitalo" required> Omakotitalo</label>
@@ -294,11 +296,7 @@
       document.getElementById('step-' + step).classList.add('active');
     }
 
-    document.getElementById("wizard-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      document.getElementById("wizard-form").classList.add("hidden");
-      document.getElementById("thank-you").classList.remove("hidden");
-    });
+    // Lomake lähetetään nyt Formsubmitin kautta, ei estetä lähetystä
   </script>
 
 </body>
